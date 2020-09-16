@@ -1,6 +1,7 @@
 import React, { useState, Component } from 'react';
 import AllMemeNames from './AllMemeNames.js';
 import Select from 'react-select';
+import Dropdown from './Dropdown';
 
 export default function Memegenerator() {
   const [text1, setText1] = useState('text1');
@@ -17,48 +18,62 @@ export default function Memegenerator() {
 
   const exampleurl = 'https://api.memegen.link/images/kermit/What/API.jpg';
 
-  const options = [
-    { value: 'kermit', label: 'Kermit' },
-    { value: 'cb', label: 'Confession Bear' },
-    { value: 'afraid_to_ask', label: 'Afraid to ask' },
-  ];
+  function InputFields() {
+    return (
+      <div>
+        <label htmlFor="tx1">Enter first line of text</label>
+        <input
+          id="tx1"
+          type="text"
+          onChange={(event) => setText1(event.currentTarget.value)}
+          label="Enter first line of text"
+        ></input>
+        <label htmlFor="tx2">Enter second line of text</label>
+        <input
+          id="tx2"
+          type="text"
+          onChange={(event) => setText2(event.currentTarget.value)}
+          label="Enter second line of text"
+        ></input>
+      </div>
+    );
+  }
 
-  const MyComponent = () => (
-    <Select
-      options={options}
-      onChange= {(e) => { console.log(getValue(e))}
-    />
-  );
+  function Dropdown() {
+    return (
+      <div>
+        <form>
+          <label>
+            Pick your favorite flavor:
+            <select
+              value={memeChoice}
+              onChange={(e) => {
+                setMemeChoice(e.currentTarget.value);
+              }}
+            >
+              <option value="kermit">Kermit</option>
+              <option value="cb">Confession Bear</option>
+              <option value="blb">Bad Luck Brian</option>
+            </select>
+          </label>
+        </form>
+        <p>You selected {memeChoice}</p>
+      </div>
+    );
+  }
 
   return (
     <div>
-      <label htmlFor="tx1">Enter first line of text</label>
-      <input
-        id="tx1"
-        type="text"
-        onChange={(event) => setText1(event.currentTarget.value)}
-        label="Enter first line of text"
-      ></input>
-      <label htmlFor="tx2">Enter second line of text</label>
-      <input
-        id="tx2"
-        type="text"
-        onChange={(event) => setText2(event.currentTarget.value)}
-        label="Enter second line of text"
-      ></input>
-      <MyComponent />
+      <InputFields />
+      <Dropdown />
       <p>
         Generating meme with the text:" {text1} {text2} "
       </p>
-      <p>Preview</p>
+      <p>Preview:</p>
       <Preview memeChoice={memeChoice} text1={text1} text2={text2} />
       <DownloadButton memeChoice={memeChoice} text1={text1} text2={text2} />
     </div>
   );
-}
-
-function MemeDropdown() {
-  return <div></div>;
 }
 
 function Preview(props) {
