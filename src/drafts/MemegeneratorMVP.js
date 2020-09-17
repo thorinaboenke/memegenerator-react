@@ -1,5 +1,5 @@
 import React, { useState, Component } from 'react';
-import { AllMemeNames } from './AllMemeNames.js';
+import AllMemeNames from './AllMemeNames.js';
 import Select from 'react-select';
 
 // import Dropdown from './Dropdown';
@@ -43,10 +43,9 @@ export default function Memegenerator() {
                 setMemeChoice(e.currentTarget.value);
               }}
             >
-              <MemeOptions MemeObject={AllMemeNames} />
-              {/* <option value="kermit">Kermit</option>
+              <option value="kermit">Kermit</option>
               <option value="cb">Confession Bear</option>
-              <option value="blb">Bad Luck Brian</option> */}
+              <option value="blb">Bad Luck Brian</option>
             </select>
           </label>
         </form>
@@ -104,24 +103,3 @@ function DownloadButton(props) {
     </div>
   );
 }
-// take the object with meme names, turn into arry with object keys map to option jsx and capitalize
-function MemeOptions(props) {
-  const nameArray = Object.keys(props.MemeObject);
-  const Choices = nameArray.map((name) => (
-    <option key={name.toString()} value={name.toString()}>
-      {name.toString().charAt(0).toUpperCase() + name.toString().slice(1)}
-    </option>
-  ));
-  return <>{Choices}</>;
-}
-
-//;
-// const numbers = [1, 2, 3, 4, 5];
-// const listItems = numbers.map((number) =>
-//   <li>{number}</li>
-// );
-
-// const numbers = [1, 2, 3, 4, 5];
-// const listItems = numbers.map((number) =>
-//   <li>{number}</li>
-// )
