@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AllMemeNames } from './AllMemeNames.js';
+import { EscapeReservedUrlCharacters } from './Replacer';
 
 // import Dropdown from './Dropdown';
 //import { DownloadFile } from '../DownloadFile.js';
@@ -25,9 +26,9 @@ export default function Memegenerator() {
       'https://api.memegen.link/images/' +
       memeChoice +
       '/' +
-      text1 +
+      EscapeReservedUrlCharacters(text1) +
       '/' +
-      text2 +
+      EscapeReservedUrlCharacters(text2) +
       '.jpg';
 
     return (
@@ -63,7 +64,7 @@ export default function Memegenerator() {
           </label>
         </form>
         <div />
-        <p>Preview:</p>
+
         <Preview
           memeChoice={memeChoice}
           text1={text1}
@@ -95,12 +96,12 @@ export default function Memegenerator() {
     const showPreview = props.showPreview;
     return showPreview ? (
       <>
-        <button onClick={props.handlePreview}>ShowPreview</button>
+        <button onClick={props.handlePreview}>Show Preview</button>
         <img src={props.exampleurl} alt={'example meme preview'} />
       </>
     ) : (
       <>
-        <button onClick={props.handlePreview}>HidePreview</button>
+        <button onClick={props.handlePreview}>Hide Preview</button>
         <img src={props.url} alt={'custom meme preview'} />
       </>
     );
