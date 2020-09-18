@@ -6,13 +6,29 @@ import { AllMemeNames } from './AllMemeNames.js';
 // import DownloadFile from './DownloadFile';
 
 export default function Memegenerator() {
-  //const exampleurl = 'https://api.memegen.link/images/kermit/What/API.jpg';
-
   function Input() {
     // set default values
     const [text1, setText1] = useState('');
     const [text2, setText2] = useState('');
     const [memeChoice, setMemeChoice] = useState('kermit');
+    const [showPreview, setShowPreview] = useState(false);
+
+    function handlePreview() {
+      setShowPreview(!showPreview);
+      console.log('click');
+      console.log(showPreview);
+    }
+
+    // build url from the inputs, this is passed as props to preview and downloader
+    const exampleurl = 'https://api.memegen.link/images/kermit/What/API.jpg';
+    const url =
+      'https://api.memegen.link/images/' +
+      memeChoice +
+      '/' +
+      text1 +
+      '/' +
+      text2 +
+      '.jpg';
 
     return (
       // Input for the text fields, update via onChange
@@ -48,9 +64,23 @@ export default function Memegenerator() {
         </form>
         <div />
         <p>Preview:</p>
-        <Preview memeChoice={memeChoice} text1={text1} text2={text2} />
+        <Preview
+          memeChoice={memeChoice}
+          text1={text1}
+          text2={text2}
+          url={url}
+          exampleurl={exampleurl}
+          handlePreview={handlePreview}
+          showPreview={showPreview}
+        />
 
-        <DownloadButton memeChoice={memeChoice} text1={text1} text2={text2} />
+        <DownloadButton
+          memeChoice={memeChoice}
+          text1={text1}
+          text2={text2}
+          url={url}
+          imagename={memeChoice}
+        />
       </div>
     );
   }
@@ -62,39 +92,34 @@ export default function Memegenerator() {
   );
 
   function Preview(props) {
-    const url =
-      'https://api.memegen.link/images/' +
-      props.memeChoice +
-      '/' +
-      props.text1 +
-      '/' +
-      props.text2 +
-      '.jpg';
-    return <img src={url} alt={'meme preview'} />;
+    const showPreview = props.showPreview;
+    return showPreview ? (
+      <>
+        <button onClick={props.handlePreview}>ShowPreview</button>
+        <img src={props.exampleurl} alt={'example meme preview'} />
+      </>
+    ) : (
+      <>
+        <button onClick={props.handlePreview}>HidePreview</button>
+        <img src={props.url} alt={'custom meme preview'} />
+      </>
+    );
   }
 
   function DownloadButton(props) {
-    const url =
-      'https://api.memegen.link/images/' +
-      props.memeChoice +
-      '/' +
-      props.text1 +
-      '/' +
-      props.text2 +
-      '.jpg';
-    // 1. fetch gets data from given url
+    // 1. fetch gets data from given url (passed as props)
     //2. The blob() methodtakes a Response stream and reads it to completion. It returns a promise that resolves with a Blob (binary large object). A Blob is a file-like object of immutable, raw data; they can be read as text or binary data, or converted into a ReadableStream so its methods can be used for processing the data.
     // 3. window.URL.createObjectURL(blob) : static method creates a DOMString containing a URL representing the object given in the parameter. The URL lifetime is tied to the document in the window on which it was created. The new object URL represents the specified File object or Blob object.
     //4. create element a on the object
     //5. set the href attribute to the url
-    // 6. a.click simulates click of the temporarily created link
+    // 6. a.click() simulates click of the temporarily created link and triggers the download
     function downloadData() {
-      fetch(url).then((response) => {
+      fetch(props.url).then((response) => {
         response.blob().then((blob) => {
           let url = window.URL.createObjectURL(blob);
           let a = document.createElement('a');
           a.href = url;
-          a.download = 'meme.jpg';
+          a.download = props.imagename;
           a.click();
         });
         window.location.href = response.url;
