@@ -64,7 +64,13 @@ export default function Memegenerator() {
           </label>
         </form>
         <div />
-
+        <DownloadButton
+          memeChoice={memeChoice}
+          text1={text1}
+          text2={text2}
+          url={url}
+          imagename={memeChoice}
+        />
         <Preview
           memeChoice={memeChoice}
           text1={text1}
@@ -73,14 +79,6 @@ export default function Memegenerator() {
           exampleurl={exampleurl}
           handlePreview={handlePreview}
           showPreview={showPreview}
-        />
-
-        <DownloadButton
-          memeChoice={memeChoice}
-          text1={text1}
-          text2={text2}
-          url={url}
-          imagename={memeChoice}
         />
       </div>
     );
@@ -94,14 +92,16 @@ export default function Memegenerator() {
 
   function Preview(props) {
     const showPreview = props.showPreview;
-    return showPreview ? (
+    return !showPreview ? (
       <>
         <button onClick={props.handlePreview}>Show Preview</button>
+        <p>Preview:</p>
         <img src={props.exampleurl} alt={'example meme preview'} />
       </>
     ) : (
       <>
         <button onClick={props.handlePreview}>Hide Preview</button>
+        <p>Preview:</p>
         <img src={props.url} alt={'custom meme preview'} />
       </>
     );
@@ -120,10 +120,10 @@ export default function Memegenerator() {
           let url = window.URL.createObjectURL(blob);
           let a = document.createElement('a');
           a.href = url;
-          a.download = props.imagename;
+          a.download = props.imagename + '.jpg';
           a.click();
         });
-        window.location.href = response.url;
+        //window.location.href = response.url;
       });
     }
     return (

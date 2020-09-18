@@ -5,4 +5,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 1em;
+}
+
+p {
+  line-height: 1.5;
+}
+button {
+  margin: 1em;
+  margin-left: 0;
+  display: block;
+}
+
+input {
+  width: 500px;
+}
+form > label {
+  line-height: 1.5;
+  display: block;
+  margin: 1em, 0, 1em, 0;
 }
