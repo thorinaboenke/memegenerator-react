@@ -1,4 +1,4 @@
-export const AllMemeNames = {
+export const allMemeNames = {
   tenguy: 'tenguy/',
   afraid: 'afraid/',
   apcr: 'apcr/',

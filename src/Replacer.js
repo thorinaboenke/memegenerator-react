@@ -1,4 +1,4 @@
-export function EscapeReservedUrlCharacters(string) {
+export function escapeReservedUrlCharacters(string) {
   const escapedString = string
     .replace(/#/g, '~h')
     .replace(/\?/g, '~q')

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { AllMemeNames } from './AllMemeNames.js';
-import { EscapeReservedUrlCharacters } from './Replacer';
+import { allMemeNames } from './allMemeNames.js';
+import { escapeReservedUrlCharacters } from './Replacer';
 
 // import Dropdown from './Dropdown';
 //import { DownloadFile } from '../DownloadFile.js';
@@ -26,9 +26,9 @@ export default function Memegenerator() {
       'https://api.memegen.link/images/' +
       memeChoice +
       '/' +
-      EscapeReservedUrlCharacters(text1) +
+      escapeReservedUrlCharacters(text1) +
       '/' +
-      EscapeReservedUrlCharacters(text2) +
+      escapeReservedUrlCharacters(text2) +
       '.jpg';
 
     return (
@@ -59,7 +59,7 @@ export default function Memegenerator() {
                 setMemeChoice(e.currentTarget.value);
               }}
             >
-              <MemeOptions MemeObject={AllMemeNames} />
+              <MemeOptions MemeObject={allMemeNames} />
             </select>
           </label>
         </form>
