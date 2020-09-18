@@ -13,6 +13,11 @@ export default function Memegenerator() {
     const [text2, setText2] = useState('');
     const [memeChoice, setMemeChoice] = useState('kermit');
     const [showPreview, setShowPreview] = useState(false);
+    const [urlArray] = useState([]);
+
+    function appendUrl(newUrl) {
+      urlArray.push(newUrl);
+    }
 
     function handlePreview() {
       setShowPreview(!showPreview);
@@ -33,54 +38,61 @@ export default function Memegenerator() {
 
     return (
       // Input for the text fields, update via onChange
-      <div>
-        <form>
-          <label htmlFor="tx1">Enter first line of text</label>
-          <input
-            value={text1}
-            id="tx1"
-            type="text"
-            onChange={(event) => setText1(event.currentTarget.value)}
+      <>
+        <div>
+          <form>
+            <label htmlFor="tx1">Enter first line of text</label>
+            <input
+              value={text1}
+              id="tx1"
+              type="text"
+              onChange={(event) => setText1(event.currentTarget.value)}
+            />
+            <label htmlFor="tx2">Enter second line of text</label>
+            <input
+              id="tx2"
+              type="text"
+              onChange={(event) => setText2(event.currentTarget.value)}
+            ></input>
+          </form>
+          {/* Dropdownmenu select > options, iterate over Object with all the names */}
+          <form>
+            <label>
+              Pick your favorite meme:
+              <select
+                value={memeChoice}
+                onChange={(e) => {
+                  setMemeChoice(e.currentTarget.value);
+                }}
+              >
+                <MemeOptions MemeObject={allMemeNames} />
+              </select>
+            </label>
+          </form>
+          <div />
+          <DownloadButton
+            memeChoice={memeChoice}
+            text1={text1}
+            text2={text2}
+            url={url}
+            imagename={memeChoice}
+            appendUrl={appendUrl}
+            urlArray={urlArray}
           />
-          <label htmlFor="tx2">Enter second line of text</label>
-          <input
-            id="tx2"
-            type="text"
-            onChange={(event) => setText2(event.currentTarget.value)}
-          ></input>
-        </form>
-        {/* Dropdownmenu select > options, iterate over Object with all the names */}
-        <form>
-          <label>
-            Pick your favorite meme:
-            <select
-              value={memeChoice}
-              onChange={(e) => {
-                setMemeChoice(e.currentTarget.value);
-              }}
-            >
-              <MemeOptions MemeObject={allMemeNames} />
-            </select>
-          </label>
-        </form>
-        <div />
-        <DownloadButton
-          memeChoice={memeChoice}
-          text1={text1}
-          text2={text2}
-          url={url}
-          imagename={memeChoice}
-        />
-        <Preview
-          memeChoice={memeChoice}
-          text1={text1}
-          text2={text2}
-          url={url}
-          exampleurl={exampleurl}
-          handlePreview={handlePreview}
-          showPreview={showPreview}
-        />
-      </div>
+          <Preview
+            memeChoice={memeChoice}
+            text1={text1}
+            text2={text2}
+            url={url}
+            exampleurl={exampleurl}
+            handlePreview={handlePreview}
+            showPreview={showPreview}
+          />
+        </div>
+        <div>
+          <History urlArray={urlArray} />
+        </div>
+      </>
     );
   }
 
@@ -115,6 +127,7 @@ export default function Memegenerator() {
     //5. set the href attribute to the url
     // 6. a.click() simulates click of the temporarily created link and triggers the download
     function downloadData() {
+      props.appendUrl(props.url);
       fetch(props.url).then((response) => {
         response.blob().then((blob) => {
           let url = window.URL.createObjectURL(blob);
@@ -142,4 +155,11 @@ export default function Memegenerator() {
     ));
     return <>{Choices}</>;
   }
+}
+
+function History(props) {
+  const urlList = props.urlArray.map((url, index) => (
+    <li key={index}>{url}</li>
+  ));
+  return <ul>{urlList}</ul>;
 }
