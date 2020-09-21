@@ -154,12 +154,12 @@ function Memegenerator() {
     const [urlArray] = useState([]);
 
     const appendUrl = (newUrl) => {
-      urlArray.push(newUrl)
-    }
+      urlArray.push(newUrl);
+    };
 
-   const handlePreview() => {
-      setShowPreview(!showPreview)
-    }
+    const handlePreview = () => {
+      setShowPreview(!showPreview);
+    };
 
     // build url from the inputs, this is passed as props to preview and downloader
     const exampleurl = 'https://api.memegen.link/images/kermit/What/API.jpg';
