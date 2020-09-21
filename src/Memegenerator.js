@@ -153,14 +153,12 @@ function Memegenerator() {
     const [showPreview, setShowPreview] = useState(false);
     const [urlArray] = useState([]);
 
-    function appendUrl(newUrl) {
-      urlArray.push(newUrl);
-      return;
+    const appendUrl = (newUrl) => {
+      urlArray.push(newUrl)
     }
 
-    function handlePreview() {
-      setShowPreview(!showPreview);
-      return;
+   const handlePreview() => {
+      setShowPreview(!showPreview)
     }
 
     // build url from the inputs, this is passed as props to preview and downloader
