@@ -1,4 +1,4 @@
-export default const AllMemeNames = {
+export const AllMemeNames = {
   tenguy: 'tenguy/',
   afraid: 'afraid/',
   apcr: 'apcr/',
