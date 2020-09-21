@@ -143,11 +143,11 @@ function Memegenerator() {
   const [text2, setText2] = useState('');
   const [memeChoice, setMemeChoice] = useState('kermit');
   const [showPreview, setShowPreview] = useState(false);
-  const [urlArray] = useState(['Urlistory:']);
+  // const [urlArray] = useState(['Urlistory:']);
 
-  const appendUrl = (newUrl) => {
-    urlArray.push(newUrl);
-  };
+  // const appendUrl = (newUrl) => {
+  //   urlArray.push(newUrl);
+  // };
 
   const handlePreview = () => {
     setShowPreview(!showPreview);
@@ -204,8 +204,8 @@ function Memegenerator() {
           text2={text2}
           url={url}
           imagename={memeChoice}
-          appendUrl={appendUrl}
-          urlArray={urlArray}
+          //appendUrl={appendUrl}
+          // urlArray={urlArray}
         />
         <Preview
           memeChoice={memeChoice}

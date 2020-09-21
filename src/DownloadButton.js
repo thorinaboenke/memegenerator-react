@@ -8,11 +8,11 @@ function DownloadButton(props) {
   //5. set the href attribute to the url
   // 6. a.click() simulates click of the temporarily created link and triggers the download
   function downloadData() {
-    props.appendUrl(props.url);
+    //props.appendUrl(props.url);
     fetch(props.url).then((response) => {
       response.blob().then((blob) => {
-        let url = window.URL.createObjectURL(blob);
-        let a = document.createElement('a');
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
         a.href = url;
         a.download = props.imagename + '.jpg';
         a.click();
