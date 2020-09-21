@@ -138,14 +138,14 @@ const allMemeNames = {
 };
 
 function Memegenerator() {
-  // set default values
+  //set default values
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
   const [memeChoice, setMemeChoice] = useState('kermit');
   const [showPreview, setShowPreview] = useState(false);
-  // const [urlArray] = useState(['Urlistory:']);
+  //const [urlArray] = useState(['Urlistory:']);
 
-  // const appendUrl = (newUrl) => {
+  //const appendUrl = (newUrl) => {
   //   urlArray.push(newUrl);
   // };
 
@@ -165,7 +165,6 @@ function Memegenerator() {
     '.jpg';
 
   return (
-    //Input for the text fields, update via onChange
     <>
       <div>
         <form>
