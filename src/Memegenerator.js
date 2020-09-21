@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { escapeReservedUrlCharacters } from './Replacer';
+//import { escapeReservedUrlCharacters } from './Replacer';
+
+function escapeReservedUrlCharacters(string) {
+  const escapedString = string
+    .replace(/#/g, '~h')
+    .replace(/\?/g, '~q')
+    .replace(/\//g, '~s')
+    .replace(/Jose/g, 'Coding Superhero')
+    .replace(/Trump/g, 'The Cheeto in Chief');
+  return escapedString;
+}
 
 const allMemeNames = {
   tenguy: 'tenguy/',
@@ -145,12 +155,12 @@ function Memegenerator() {
 
     function appendUrl(newUrl) {
       urlArray.push(newUrl);
+      return;
     }
 
     function handlePreview() {
       setShowPreview(!showPreview);
-      console.log('click');
-      console.log(showPreview);
+      return;
     }
 
     // build url from the inputs, this is passed as props to preview and downloader
