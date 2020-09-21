@@ -297,7 +297,7 @@ function History(props) {
   const urlList = props.urlArray.map((url, index) => (
     <li key={index}>{url}</li>
   ));
-  return <ul>{urlList}</ul>;
+  return <ul>{urlList || null} </ul>;
 }
 
 export default Memegenerator;
