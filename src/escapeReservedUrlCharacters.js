@@ -1,4 +1,4 @@
-function escapeReservedUrlCharacters(string) {
+export function escapeReservedUrlCharacters(string) {
   const escapedString = string
     .replace(/#/g, '~h')
     .replace(/\?/g, '~q')
@@ -7,5 +7,3 @@ function escapeReservedUrlCharacters(string) {
     .replace(/Trump/g, 'The Cheeto in Chief');
   return escapedString;
 }
-
-export default escapeReservedUrlCharacters;
