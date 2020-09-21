@@ -134,7 +134,7 @@ const allMemeNames = {
   chosen: 'chosen/',
 };
 
-export default function Memegenerator() {
+function Memegenerator() {
   function Input() {
     // set default values
     const [text1, setText1] = useState('');
@@ -291,3 +291,5 @@ function History(props) {
   ));
   return <ul>{urlList}</ul>;
 }
+
+export default Memegenerator;
