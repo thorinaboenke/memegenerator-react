@@ -1,5 +1,5 @@
 GitHub: thorinaboenke/reactmemegenerator
-CodeSandbox: codesandbox.io/s/reactmemegenerator-qlgkr
+CodeSandbox: https://codesandbox.io/s/react-meme-generator-yuv36
 Netlify: awesome-haibt-8a0940.netlify.app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
