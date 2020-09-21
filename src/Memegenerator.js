@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { allMemeNames } from './allMemeNames.js';
+import { allMemeNames } from './AllMemeNames.js';
 import { escapeReservedUrlCharacters } from './Replacer';
 
 // import Dropdown from './Dropdown';
