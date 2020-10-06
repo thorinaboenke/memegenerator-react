@@ -1,5 +1,9 @@
 ### React Memegenerator
 
+GitHub: thorinaboenke/reactmemegenerator
+CodeSandbox: https://codesandbox.io/s/react-meme-generator-yuv36
+Netlify: awesome-haibt-8a0940.netlify.app
+
 This app fetches custom memes from https://memegen.link/ .
 First and second line of text are defined via text input and the meme is selected via dropdown menu.
 
