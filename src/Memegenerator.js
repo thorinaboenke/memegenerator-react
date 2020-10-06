@@ -138,16 +138,11 @@ const allMemeNames = {
 };
 
 function Memegenerator() {
-  //set default values
+  // set default values
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
   const [memeChoice, setMemeChoice] = useState('kermit');
   const [showPreview, setShowPreview] = useState(false);
-  //const [urlArray] = useState(['Urlistory:']);
-
-  //const appendUrl = (newUrl) => {
-  //   urlArray.push(newUrl);
-  // };
 
   const handlePreview = () => {
     setShowPreview(!showPreview);
@@ -167,35 +162,33 @@ function Memegenerator() {
   return (
     <>
       <div>
-        <form>
-          <label htmlFor="tx1">Enter first line of text</label>
-          <input
-            value={text1}
-            id="tx1"
-            type="text"
-            onChange={(event) => setText1(event.currentTarget.value)}
-          />
-          <label htmlFor="tx2">Enter second line of text</label>
-          <input
-            id="tx2"
-            type="text"
-            onChange={(event) => setText2(event.currentTarget.value)}
-          ></input>
-        </form>
-        {/* Dropdownmenu select > options, iterate over Object with all the names */}
-        <form>
-          <label>
-            Pick your favorite meme:
-            <select
-              value={memeChoice}
-              onChange={(e) => {
-                setMemeChoice(e.currentTarget.value);
-              }}
-            >
-              <MemeOptions MemeObject={allMemeNames} />
-            </select>
-          </label>
-        </form>
+        <label htmlFor="tx1">Enter first line of text</label>
+        <input
+          value={text1}
+          id="tx1"
+          type="text"
+          onChange={(event) => setText1(event.currentTarget.value)}
+        />
+        <p></p>
+
+        <label htmlFor="tx2">Enter second line of text</label>
+        <input
+          id="tx2"
+          type="text"
+          onChange={(event) => setText2(event.currentTarget.value)}
+        ></input>
+        <p></p>
+        <label>
+          Pick your favorite meme:
+          <select
+            value={memeChoice}
+            onChange={(e) => {
+              setMemeChoice(e.currentTarget.value);
+            }}
+          >
+            <MemeOptions MemeObject={allMemeNames} />
+          </select>
+        </label>
         <div />
         <DownloadButton
           memeChoice={memeChoice}
@@ -203,8 +196,6 @@ function Memegenerator() {
           text2={text2}
           url={url}
           imagename={memeChoice}
-          //appendUrl={appendUrl}
-          // urlArray={urlArray}
         />
         <Preview
           memeChoice={memeChoice}
@@ -216,9 +207,6 @@ function Memegenerator() {
           showPreview={showPreview}
         />
       </div>
-      {/* <div>
-          <History urlArray={urlArray} />
-        </div> */}
     </>
   );
 }
