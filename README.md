@@ -14,4 +14,4 @@ First and second line of text are defined via text input and the meme is selecte
 [CodeSandbox] (https://codesandbox.io/s/reactmemegenerator-qlgkr)
 [Netlify](https://awesome-haibt-8a0940.netlify.app/)
 
-![alt text](https://github.com/thorinaboenke/colorgenerator/blob/master/public/Memegenerator.png)
+![alt text](https://github.com/thorinaboenke/reactmemegenerator/blob/master/public/Memegenerator.png)
