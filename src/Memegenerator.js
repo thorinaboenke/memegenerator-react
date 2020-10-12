@@ -3,145 +3,145 @@ import { escapeReservedUrlCharacters } from './escapeReservedUrlCharacters';
 import DownloadButton from './DownloadButton';
 import MemeOptions from './MemeOptions';
 
-
-const allMemeNames =[ 
-"tenguy"
-,"afraid"
-,"apcr"
-,"older"
-,"aag"
-,"atis"
-,"tried"
-,"biw"
-,"stew"
-,"blb"
-, "bihw"
-, "kermit"
-, "bd"
-, "ch"
-, "cbg"
-, "wonka"
-, "cb"
-, "gandalf"
-, "keanu"
-, "cryingfloor"
-, "dsm"
-, "disastergirl"
-, "live"
-, "ants"
-, "doge"
-, "trump"
-, "drake"
-, "ermg"
-, "facepalm"
-, "feelsgood"
-, "firsttry"
-, "fwp"
-, "fa"
-, "fbf"
-, "fmr"
-, "fry"
-, "ggg"
-, "grumpycat"
-, "harold"
-, "hipster"
-, "icanhas"
-, "crazypills"
-, "mw"
-, "noidea"
-, "regret"
-, "boat"
-, "hagrid"
-, "sohappy"
-, "captain"
-, "bender"
-, "inigo"
-, "iw"
-, "ackbar"
-, "happening"
-, "joker"
-, "ive"
-, "jd"
-, "ll"
-, "lrv"
-, "leo"
-, "away"
-, "morpheus"
-, "mb"
-, "badchoice"
-, "mini-keanu"
-, "mmm"
-, "spongebob"
-, "soup-nazi"
-, "jetpack"
-, "imsorry"
-, "red"
-, "mordor"
-, "oprah"
-, "oag"
-, "remembers"
-, "persian"
-, "philosoraptor"
-, "jw"
-, "patrick"
-, "rollsafe"
-, "sad-obama"
-, "sad-clinton"
-, "sadfrog"
-, "sad-bush"
-, "sad-biden"
-, "sad-boehner"
-, "saltbae"
-, "sarcasticbear"
-, "dwight"
-, "sb"
-, "ss"
-, "soa"
-, "sf"
-, "dodgson"
-, "money"
-, "snek"
-, "sk"
-, "sohot"
-, "nice"
-, "awesome-awkward"
-,"awesome"
-,"awkward-awesome"
-,"awkward"
-,"stop-it"
-,"fetch"
-,"success"
-,"scc"
-,"ski"
-,"aint-got-time"
-,"officespace"
-,"interesting"
-,"toohigh"
-,"bs"
-,"fine"
-,"sparta"
-,"ugandanknuck"
-,"puffin"
-,"whatyear"
-,"center"
-,"both"
-,"winter"
-,"xy"
-,"buzz"
-,"yodawg"
-,"yuno"
-,"yallgot"
-,"gears"
-,"bad"
-,"elf"
-,"chosen"]
+const allMemeNames = [
+  'tenguy',
+  'afraid',
+  'apcr',
+  'older',
+  'aag',
+  'atis',
+  'tried',
+  'biw',
+  'stew',
+  'blb',
+  'bihw',
+  'kermit',
+  'bd',
+  'ch',
+  'cbg',
+  'wonka',
+  'cb',
+  'gandalf',
+  'keanu',
+  'cryingfloor',
+  'dsm',
+  'disastergirl',
+  'live',
+  'ants',
+  'doge',
+  'trump',
+  'drake',
+  'ermg',
+  'facepalm',
+  'feelsgood',
+  'firsttry',
+  'fwp',
+  'fa',
+  'fbf',
+  'fmr',
+  'fry',
+  'ggg',
+  'grumpycat',
+  'harold',
+  'hipster',
+  'icanhas',
+  'crazypills',
+  'mw',
+  'noidea',
+  'regret',
+  'boat',
+  'hagrid',
+  'sohappy',
+  'captain',
+  'bender',
+  'inigo',
+  'iw',
+  'ackbar',
+  'happening',
+  'joker',
+  'ive',
+  'jd',
+  'll',
+  'lrv',
+  'leo',
+  'away',
+  'morpheus',
+  'mb',
+  'badchoice',
+  'mini-keanu',
+  'mmm',
+  'spongebob',
+  'soup-nazi',
+  'jetpack',
+  'imsorry',
+  'red',
+  'mordor',
+  'oprah',
+  'oag',
+  'remembers',
+  'persian',
+  'philosoraptor',
+  'jw',
+  'patrick',
+  'rollsafe',
+  'sad-obama',
+  'sad-clinton',
+  'sadfrog',
+  'sad-bush',
+  'sad-biden',
+  'sad-boehner',
+  'saltbae',
+  'sarcasticbear',
+  'dwight',
+  'sb',
+  'ss',
+  'soa',
+  'sf',
+  'dodgson',
+  'money',
+  'snek',
+  'sk',
+  'sohot',
+  'nice',
+  'awesome-awkward',
+  'awesome',
+  'awkward-awesome',
+  'awkward',
+  'stop-it',
+  'fetch',
+  'success',
+  'scc',
+  'ski',
+  'aint-got-time',
+  'officespace',
+  'interesting',
+  'toohigh',
+  'bs',
+  'fine',
+  'sparta',
+  'ugandanknuck',
+  'puffin',
+  'whatyear',
+  'center',
+  'both',
+  'winter',
+  'xy',
+  'buzz',
+  'yodawg',
+  'yuno',
+  'yallgot',
+  'gears',
+  'bad',
+  'elf',
+  'chosen',
+];
 
 function Memegenerator() {
   // set default values
   const [text1, setText1] = useState('Text1');
   const [text2, setText2] = useState('Text2');
   const [memeChoice, setMemeChoice] = useState('kermit');
- 
+
   const url =
     'https://api.memegen.link/images/' +
     memeChoice +
@@ -172,8 +172,8 @@ function Memegenerator() {
   }
 
   return (
-    <div className='outer-flex-container'>
-      <div className='flex-container'>
+    <div className="outer-flex-container">
+      <div className="flex-container">
         <h1>Custom meme generator</h1>
         <label htmlFor="tx1">Enter first line of text</label>
         <input
@@ -181,14 +181,14 @@ function Memegenerator() {
           type="text"
           onChange={(event) => setText1(event.currentTarget.value)}
         />
-      <br/>
+        <br />
         <label htmlFor="tx2">Enter second line of text</label>
         <input
           id="tx2"
           type="text"
           onChange={(event) => setText2(event.currentTarget.value)}
         />
-        <br/>
+        <br />
         <label>
           Pick your favorite meme:
           <select
@@ -205,9 +205,9 @@ function Memegenerator() {
           imagename={memeChoice}
           downloadData={downloadData}
         />
-        <img src={url} alt='custom meme preview' />
+        <img src={url} alt="custom meme preview" />
       </div>
-      </div>
+    </div>
   );
 }
 
