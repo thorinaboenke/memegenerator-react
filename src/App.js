@@ -3,9 +3,7 @@ import Memegenerator from './Memegenerator';
 import './App.css';
 
 function App() {
-  return (
-      <Memegenerator />
-  );
+  return <Memegenerator />;
 }
 
 export default App;
