@@ -4,11 +4,7 @@ import './App.css';
 
 function App() {
   return (
-    <div>
-      <h1>Custom meme generator</h1>
-
       <Memegenerator />
-    </div>
   );
 }
 

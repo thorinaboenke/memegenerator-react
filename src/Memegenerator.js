@@ -172,7 +172,9 @@ function Memegenerator() {
   }
 
   return (
+    <div className='outer-flex-container'>
       <div className='flex-container'>
+        <h1>Custom meme generator</h1>
         <label htmlFor="tx1">Enter first line of text</label>
         <input
           id="tx1"
@@ -204,6 +206,7 @@ function Memegenerator() {
           downloadData={downloadData}
         />
         <img src={url} alt='custom meme preview' />
+      </div>
       </div>
   );
 }
