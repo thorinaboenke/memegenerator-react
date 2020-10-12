@@ -1,155 +1,147 @@
 import React, { useState } from 'react';
 import { escapeReservedUrlCharacters } from './escapeReservedUrlCharacters';
-import Preview from './Preview';
 import DownloadButton from './DownloadButton';
 import MemeOptions from './MemeOptions';
 
-const allMemeNames = {
-  tenguy: 'tenguy/',
-  afraid: 'afraid/',
-  apcr: 'apcr/',
-  older: 'older/',
-  aag: 'aag/',
-  atis: 'atis/',
-  tried: 'tried/',
-  biw: 'biw/',
-  stew: 'stew/',
-  blb: 'blb/',
-  bihw: 'bihw/',
-  kermit: 'kermit/',
-  bd: 'bd/',
-  ch: 'ch/',
-  cbg: 'cbg/',
-  wonka: 'wonka/',
-  cb: 'cb/',
-  gandalf: 'gandalf/',
-  keanu: 'keanu/',
-  cryingfloor: 'cryingfloor/',
-  dsm: 'dsm/',
-  disastergirl: 'disastergirl/',
-  live: 'live/',
-  ants: 'ants/',
-  doge: 'doge/',
-  trump: 'trump/',
-  drake: 'drake/',
-  ermg: 'ermg/',
-  facepalm: 'facepalm/',
-  feelsgood: 'feelsgood/',
-  firsttry: 'firsttry/',
-  fwp: 'fwp/',
-  fa: 'fa/',
-  fbf: 'fbf/',
-  fmr: 'fmr/',
-  fry: 'fry/',
-  ggg: 'ggg/',
-  grumpycat: 'grumpycat/',
-  harold: 'harold/',
-  hipster: 'hipster/',
-  icanhas: 'icanhas/',
-  crazypills: 'crazypills/',
-  mw: 'mw/',
-  noidea: 'noidea/',
-  regret: 'regret/',
-  boat: 'boat/',
-  hagrid: 'hagrid/',
-  sohappy: 'sohappy/',
-  captain: 'captain/',
-  bender: 'bender/',
-  inigo: 'inigo/',
-  iw: 'iw/',
-  ackbar: 'ackbar/',
-  happening: 'happening/',
-  joker: 'joker/',
-  ive: 'ive/',
-  jd: 'jd/',
-  ll: 'll/',
-  lrv: 'lrv/',
-  leo: 'leo/',
-  away: 'away/',
-  morpheus: 'morpheus/',
-  mb: 'mb/',
-  badchoice: 'badchoice/',
-  'mini-keanu': 'mini-keanu/',
-  mmm: 'mmm/',
-  spongebob: 'spongebob/',
-  'soup-nazi': 'soup-nazi/',
-  jetpack: 'jetpack/',
-  imsorry: 'imsorry/',
-  red: 'red/',
-  mordor: 'mordor/',
-  oprah: 'oprah/',
-  oag: 'oag/',
-  remembers: 'remembers/',
-  persian: 'persian/',
-  philosoraptor: 'philosoraptor/',
-  jw: 'jw/',
-  patrick: 'patrick/',
-  rollsafe: 'rollsafe/',
-  'sad-obama': 'sad-obama/',
-  'sad-clinton': 'sad-clinton/',
-  sadfrog: 'sadfrog/',
-  'sad-bush': 'sad-bush/',
-  'sad-biden': 'sad-biden/',
-  'sad-boehner': 'sad-boehner/',
-  saltbae: 'saltbae/',
-  sarcasticbear: 'sarcasticbear/',
-  dwight: 'dwight/',
-  sb: 'sb/',
-  ss: 'ss/',
-  soa: 'soa/',
-  sf: 'sf/',
-  dodgson: 'dodgson/',
-  money: 'money/',
-  snek: 'snek/',
-  sk: 'sk/',
-  sohot: 'sohot/',
-  nice: 'nice/',
-  'awesome-awkward': 'awesome-awkward/',
-  awesome: 'awesome/',
-  'awkward-awesome': 'awkward-awesome/',
-  awkward: 'awkward/',
-  'stop-it': 'stop-it/',
-  fetch: 'fetch/',
-  success: 'success/',
-  scc: 'scc/',
-  ski: 'ski/',
-  'aint-got-time': 'aint-got-time/',
-  officespace: 'officespace/',
-  interesting: 'interesting/',
-  toohigh: 'toohigh/',
-  bs: 'bs/',
-  fine: 'fine/',
-  sparta: 'sparta/',
-  ugandanknuck: 'ugandanknuck/',
-  puffin: 'puffin/',
-  whatyear: 'whatyear/',
-  center: 'center/',
-  both: 'both/',
-  winter: 'winter/',
-  xy: 'xy/',
-  buzz: 'buzz/',
-  yodawg: 'yodawg/',
-  yuno: 'yuno/',
-  yallgot: 'yallgot/',
-  gears: 'gears/',
-  bad: 'bad/',
-  elf: 'elf/',
-  chosen: 'chosen/',
-};
+
+const allMemeNames =[ 
+"tenguy"
+,"afraid"
+,"apcr"
+,"older"
+,"aag"
+,"atis"
+,"tried"
+,"biw"
+,"stew"
+,"blb"
+, "bihw"
+, "kermit"
+, "bd"
+, "ch"
+, "cbg"
+, "wonka"
+, "cb"
+, "gandalf"
+, "keanu"
+, "cryingfloor"
+, "dsm"
+, "disastergirl"
+, "live"
+, "ants"
+, "doge"
+, "trump"
+, "drake"
+, "ermg"
+, "facepalm"
+, "feelsgood"
+, "firsttry"
+, "fwp"
+, "fa"
+, "fbf"
+, "fmr"
+, "fry"
+, "ggg"
+, "grumpycat"
+, "harold"
+, "hipster"
+, "icanhas"
+, "crazypills"
+, "mw"
+, "noidea"
+, "regret"
+, "boat"
+, "hagrid"
+, "sohappy"
+, "captain"
+, "bender"
+, "inigo"
+, "iw"
+, "ackbar"
+, "happening"
+, "joker"
+, "ive"
+, "jd"
+, "ll"
+, "lrv"
+, "leo"
+, "away"
+, "morpheus"
+, "mb"
+, "badchoice"
+, "mini-keanu"
+, "mmm"
+, "spongebob"
+, "soup-nazi"
+, "jetpack"
+, "imsorry"
+, "red"
+, "mordor"
+, "oprah"
+, "oag"
+, "remembers"
+, "persian"
+, "philosoraptor"
+, "jw"
+, "patrick"
+, "rollsafe"
+, "sad-obama"
+, "sad-clinton"
+, "sadfrog"
+, "sad-bush"
+, "sad-biden"
+, "sad-boehner"
+, "saltbae"
+, "sarcasticbear"
+, "dwight"
+, "sb"
+, "ss"
+, "soa"
+, "sf"
+, "dodgson"
+, "money"
+, "snek"
+, "sk"
+, "sohot"
+, "nice"
+, "awesome-awkward"
+,"awesome"
+,"awkward-awesome"
+,"awkward"
+,"stop-it"
+,"fetch"
+,"success"
+,"scc"
+,"ski"
+,"aint-got-time"
+,"officespace"
+,"interesting"
+,"toohigh"
+,"bs"
+,"fine"
+,"sparta"
+,"ugandanknuck"
+,"puffin"
+,"whatyear"
+,"center"
+,"both"
+,"winter"
+,"xy"
+,"buzz"
+,"yodawg"
+,"yuno"
+,"yallgot"
+,"gears"
+,"bad"
+,"elf"
+,"chosen"]
 
 function Memegenerator() {
   // set default values
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
+  const [text1, setText1] = useState('Text1');
+  const [text2, setText2] = useState('Text2');
   const [memeChoice, setMemeChoice] = useState('kermit');
-  const [showPreview, setShowPreview] = useState(false);
-
-  const handlePreview = () => {
-    setShowPreview(!showPreview);
-  };
-
-  // build url from the inputs, this is passed as props to preview and downloader
-  const exampleurl = 'https://api.memegen.link/images/kermit/What/API.jpg';
+ 
   const url =
     'https://api.memegen.link/images/' +
     memeChoice +
@@ -159,25 +151,42 @@ function Memegenerator() {
     escapeReservedUrlCharacters(text2) +
     '.jpg';
 
+  // 1. fetch gets data from given url (passed as props)
+  // 2. The blob() methodtakes a Response stream and reads it to completion. It returns a promise that resolves with a Blob (binary large object). A Blob is a file-like object of immutable, raw data; they can be read as text or binary data, or converted into a ReadableStream so its methods can be used for processing the data.
+  // 3. window.URL.createObjectURL(blob) : static method creates a DOMString containing a URL representing the object given in the parameter. The URL lifetime is tied to the document in the window on which it was created. The new object URL represents the specified File object or Blob object.
+  // 4. create element a on the object
+  // 5. set the href attribute to the url
+  // 6. a.click() simulates click of the temporarily created link and triggers the download
+  // 7. remove temporary a tag again
+  function downloadData(url, imagename) {
+    fetch(url).then((response) => {
+      response.blob().then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = imagename + '.jpg';
+        a.click();
+        a.remove();
+      });
+    });
+  }
+
   return (
-    <>
-      <div>
+      <div className='flex-container'>
         <label htmlFor="tx1">Enter first line of text</label>
         <input
-          value={text1}
           id="tx1"
           type="text"
           onChange={(event) => setText1(event.currentTarget.value)}
         />
-        <p></p>
-
+      <br/>
         <label htmlFor="tx2">Enter second line of text</label>
         <input
           id="tx2"
           type="text"
           onChange={(event) => setText2(event.currentTarget.value)}
-        ></input>
-        <p></p>
+        />
+        <br/>
         <label>
           Pick your favorite meme:
           <select
@@ -186,28 +195,16 @@ function Memegenerator() {
               setMemeChoice(e.currentTarget.value);
             }}
           >
-            <MemeOptions MemeObject={allMemeNames} />
+            <MemeOptions memeArray={allMemeNames} />
           </select>
         </label>
-        <div />
         <DownloadButton
-          memeChoice={memeChoice}
-          text1={text1}
-          text2={text2}
           url={url}
           imagename={memeChoice}
+          downloadData={downloadData}
         />
-        <Preview
-          memeChoice={memeChoice}
-          text1={text1}
-          text2={text2}
-          url={url}
-          exampleurl={exampleurl}
-          handlePreview={handlePreview}
-          showPreview={showPreview}
-        />
+        <img src={url} alt='custom meme preview' />
       </div>
-    </>
   );
 }
 

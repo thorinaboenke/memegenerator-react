@@ -16,12 +16,25 @@ button {
   margin-left: 0;
   display: block;
 }
+button:hover {
+  cursor: pointer;
+}
 
 input {
   width: 500px;
+  margin: 1em 0 1em 0;
 }
 form > label {
   line-height: 1.5;
   display: block;
   margin: 1em, 0, 1em, 0;
+}
+
+img {
+  width: 500px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
 }
