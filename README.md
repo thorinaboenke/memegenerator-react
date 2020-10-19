@@ -1,4 +1,6 @@
-### React Memegenerator
+## React Memegenerator
+
+Created during UpLeveled Web Development Bootcamp Vienna September 2020.
 
 This app fetches custom memes from https://memegen.link/.
 
